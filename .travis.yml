@@ -13,4 +13,5 @@ before_install:
 # to ensure test results are reture after completion instead of waiting 
 # addition inputs.
 script:
-    - docker run tfatex/docker-react-app npm run test -- --coverage
+    - docker run -e CI=true tfatex/docker-react-app npm run test
+    # - docker run tfatex/docker-react-app npm run test -- --coverage
