@@ -1,0 +1,16 @@
+# We need super user permission
+sudo: required
+
+# This will install docker and make it ready to go
+services:
+    - docker
+
+# This is a series of event to occur before build
+before_install:
+    - docker build -t tfatex/docker-react-app -f Dockerfile.dev .
+
+# The script is executed to run our test and -- --coverage is added
+# to ensure test results are reture after completion instead of waiting 
+# addition inputs.
+script:
+    - docker run tfatex/docker-react-app npm run test -- --coverage
