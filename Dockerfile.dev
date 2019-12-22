@@ -1,0 +1,14 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY ./package.json ./
+
+RUN npm install
+
+# COPY here can be removed since we are using docker volume to transfer
+# files on the fly. However leaving it help@ at production since docker volume
+# is not needed at production.
+COPY . .
+
+CMD ["npm", "start"]
